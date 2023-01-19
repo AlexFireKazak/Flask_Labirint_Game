@@ -23,3 +23,4 @@ class GameForm(FlaskForm):
         }
     )
     submit = SubmitField("Принять")
+

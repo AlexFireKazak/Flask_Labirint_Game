@@ -6,14 +6,15 @@
 
 <form action="" method="POST">
     {{ form.csrf_token }}
-    {% for field in form if field.name != "csrf_token" and field.name != "submit" %}
-        {{ field.label() }}
-        {{ field }}
-        {% for error in field.errors %}
-        {{ error }}
-        {% endfor %}
-    {% endfor %}
-    {{ form.submit }}
+    <p>{{ form.way.label }} <br>
+        {{ form.way }}</p>
+    <p>
+        {{ form.number_steps.label }} <br>
+        {{ form.number_steps }}
+    </p>
+    <p>
+        {{ form.submit }}
+    </p>
 </form>
 
 {% endblock %}

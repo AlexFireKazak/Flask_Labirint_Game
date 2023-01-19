@@ -15,10 +15,10 @@ class SingletonMeta(type):
         return cls._instances[cls]
 
 class Labirint_game(metaclass=SingletonMeta):
-    def __init__(self, width=5, heigth=5):
+    def __init__(self, width=5, height=5):
 #        super().__init__()
         self.width = width
-        self.heigth = heigth
+        self.heigth = height
         self.world = self.generate_world()
         self.win = False
 
@@ -29,7 +29,7 @@ class Labirint_game(metaclass=SingletonMeta):
         self.exit = (random.randint(0, self.width-1), random.randint(0, self.heigth-1))
         if self.start == self.exit:
             while self.start == self.exit:
-                self.exit = (random.randint(0, self.width), random.randint(0, self.heigth))
+                self.exit = (random.randint(0, self.width-1), random.randint(0, self.heigth-1))
         world[self.start[0]][self.start[1]] = 1
         world[self.exit[0]][self.exit[1]] = -1
         return world
@@ -37,7 +37,7 @@ class Labirint_game(metaclass=SingletonMeta):
     def go_to(self, course, steps):
         courses = {0: (-1, 0), 1: (0, 1), 2: (1, 0), 3: (0, -1)}
         now_travel = courses[course]
-        end_point = ((self.start[0] + steps * now_travel[0])%self.width, (self.start[1] + steps * now_travel[1])%self.heigth)
+        end_point = ((self.start[0] + steps * now_travel[0]-1)%self.width, (self.start[1] + steps * now_travel[1]-1)%self.heigth)
         self.world[self.start[0]][self.start[1]] = 0
         self.world[end_point[0]][end_point[1]] = 1
         if end_point != self.exit:
