@@ -21,17 +21,21 @@ class Labirint_game(metaclass=SingletonMeta):
         self.heigth = height
         self.world = self.generate_world()
         self.win = False
+        self.start = (random.randint(0, self.width - 1), random.randint(0, self.heigth - 1))
+        self.exit = (random.randint(0, self.width - 1), random.randint(0, self.heigth - 1))
+#        if self.start == self.exit:
+#            while self.start == self.exit:
+#                self.exit = (random.randint(0, self.width - 1), random.randint(0, self.heigth - 1))
+        self.world[self.start[0]][self.start[1]] = 1
+#        print(self.start, self.exit)
+
 
 
     def generate_world(self):
         world = [[0 for _ in range(self.width)] for i in range(self.heigth)]
-        self.start = (random.randint(0, self.width-1), random.randint(0, self.heigth-1))
-        self.exit = (random.randint(0, self.width-1), random.randint(0, self.heigth-1))
-        if self.start == self.exit:
-            while self.start == self.exit:
-                self.exit = (random.randint(0, self.width-1), random.randint(0, self.heigth-1))
-        world[self.start[0]][self.start[1]] = 1
-        world[self.exit[0]][self.exit[1]] = -1
+
+
+        #world[self.exit[0]][self.exit[1]] = -1
         return world
 
     def go_to(self, course, steps):
