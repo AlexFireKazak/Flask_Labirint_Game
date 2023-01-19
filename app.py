@@ -9,8 +9,8 @@ app.config.from_object(Config)
 
 @app.route("/")
 def index():
-    #Labirint_game(width=3, height=3)
-    return render_template("index.html", game=Labirint_game())
+    from labirint_game import Labirint_game
+    return render_template("index.html", game=Labirint_game().new_start_exit)
 
 @app.route("/game/", methods=['POST', 'GET'])
 def game():
@@ -27,7 +27,7 @@ def game():
             print('start:', game_now.start, 'exit', game_now.exit, game_now.win)
             return render_template("game.html", game_now=game_now, form=form)
         else:
-            return render_template("win_congrats.html")
+            return render_template("win_congrats.html", game_now=game_now.new_start_exit())
     return render_template('game.html', game_now=game_now, form=form)
 
 if __name__ =='__main__':
