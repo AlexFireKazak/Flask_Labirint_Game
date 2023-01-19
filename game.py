@@ -36,7 +36,7 @@ class Labirint_game(SingletonMeta):
     def go_to(self, course, steps):
         courses = {0: (-1, 0), 1: (0, 1), 2: (1, 0), 3: (0, -1)}
         now_travel = courses[course]
-        end_point = ((self.start[0] + steps * now_travel[0])%self.width, (self.start[1] + steps * now_travel[1])%self.height)
+        end_point = ((self.start[0] + steps * now_travel[0])%self.width, (self.start[1] + steps * now_travel[1])%self.heigth)
         self.world[self.start[0]][self.start[1]] = 0
         self.world[end_point[0]][end_point[1]] = 1
         if end_point != self.exit:
