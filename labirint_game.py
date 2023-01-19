@@ -14,8 +14,9 @@ class SingletonMeta(type):
                 cls._instances[cls] = instance
         return cls._instances[cls]
 
-class Labirint_game(SingletonMeta):
+class Labirint_game(metaclass=SingletonMeta):
     def __init__(self, width=5, heigth=5):
+#        super().__init__()
         self.width = width
         self.heigth = heigth
         self.world = self.generate_world()
@@ -24,8 +25,8 @@ class Labirint_game(SingletonMeta):
 
     def generate_world(self):
         world = [[0 for _ in range(self.width)] for i in range(self.heigth)]
-        self.start = (random.randint(0, self.width), random.randint(0, self.heigth))
-        self.exit = (random.randint(0, self.width), random.randint(0, self.heigth))
+        self.start = (random.randint(0, self.width-1), random.randint(0, self.heigth-1))
+        self.exit = (random.randint(0, self.width-1), random.randint(0, self.heigth-1))
         if self.start == self.exit:
             while self.start == self.exit:
                 self.exit = (random.randint(0, self.width), random.randint(0, self.heigth))

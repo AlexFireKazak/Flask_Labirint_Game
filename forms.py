@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import SelectField, IntegerField
+from wtforms import SelectField, IntegerField, SubmitField
 from wtforms.validators import DataRequired, NumberRange
 
 class GameForm(FlaskForm):
@@ -22,3 +22,4 @@ class GameForm(FlaskForm):
             'class': 'form-control'
         }
     )
+    submit = SubmitField("Принять")
