@@ -49,11 +49,6 @@ class Labirint_game(Singleton):
             Labirint_game.win = True
             print('win')
 
-t = Labirint_game()
-print(t.start, t.exit)
-Labirint_game._instance = None
-t = Labirint_game()
-print(t.start, t.exit)
 
 
 class Labirint_Game:
@@ -81,8 +76,3 @@ class Labirint_Game:
             self.win = True
             print('win')
 
-t = Labirint_Game()
-print(t.start, t.exit)
-
-t = Labirint_Game()
-print(t.start, t.exit)
