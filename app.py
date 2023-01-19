@@ -20,12 +20,12 @@ def game():
     if request.method == 'POST':
         way = request.form.get('way')
         steps = int(request.form.get('number_steps'))
-
+        game_now.go_to(way, steps)
         if Labirint_game.win != True:
             print('win?', Labirint_game.win)
             print(id(game_now))
             print('start:', game_now.start, 'exit', game_now.exit, game_now.win)
-            return render_template("game.html", game_now=game_now.go_to(way, steps), form=form)
+            return render_template("game.html", game_now=game_now, form=form)
         else:
             return render_template("win_congrats.html")
     return render_template('game.html', game_now=game_now, form=form)
