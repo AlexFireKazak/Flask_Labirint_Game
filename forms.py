@@ -1,6 +1,7 @@
 from flask_wtf import FlaskForm
-from wtforms import SelectField, IntegerField, SubmitField
-from wtforms.validators import DataRequired, NumberRange
+from wtforms import SelectField, IntegerField, SubmitField, StringField
+from wtforms.validators import DataRequired, NumberRange, Length
+
 
 class GameForm(FlaskForm):
     way =SelectField(
@@ -24,3 +25,7 @@ class GameForm(FlaskForm):
     )
     submit = SubmitField("Принять")
 
+
+class UserNameForm(FlaskForm):
+    user_name = StringField('Укажите Ваше имя', validators=[DataRequired(), Length(min=2, )])
+    submit = SubmitField('Я готов(а)!')

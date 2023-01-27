@@ -3,6 +3,9 @@
 {% block app_content %}
 <a class="btn-first-page" href="{{ url_for('index') }}">На главную</a>
 <p>Игра началась</p>
+{% if steps %}
+    <p>{{ steps }}</p>
+{% endif %}
 
 <form action="" method="POST">
     {{ form.csrf_token }}
@@ -17,5 +20,8 @@
     </p>
 
 </form>
+
+<p>Вы сейчас здесь: {{ game_now.start }}</p>
+<p>Выход здесь: {{ game_now.exit }}</p>
 
 {% endblock %}
